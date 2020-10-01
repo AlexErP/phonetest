@@ -1,0 +1,1 @@
+create table phone (phonenumber varchar(255) not null, name varchar(255), primary key (phonenumber))
