@@ -27,24 +27,16 @@ public class PhoneController {
         return phones;
     }
 
-
-    @PutMapping("/{phonepumber}")
-    public Phone updatePhone(@PathVariable String phonepumber, @RequestBody Phone phone){
-
-        return phoneService.update(phonepumber,phone);
-    }
-
     @PostMapping
     public Phone createPhone(@RequestBody Phone phone) {
-        return phoneService.create(phone);
+        return phoneService.create(phone.formatPhone());
     }
 
-
-    @DeleteMapping("/{phonenumber}")
-    public void deleteMessage(@PathVariable String phonenumber)
+    @DeleteMapping
+    public List<Phone>  deleteMessage(@RequestBody Phone phone)
     {
-        Phone it = phoneService.findByPhonenumber(phonenumber);
-        phoneService.delete(it);
+        phoneService.delete(phone.formatPhone());
+        return phoneService.readAll();
     }
 
 }

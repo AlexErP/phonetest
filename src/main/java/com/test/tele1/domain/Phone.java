@@ -1,32 +1,45 @@
 package com.test.tele1.domain;
 
+import com.test.tele1.util.Utils;
+
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.IdClass;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-public class Phone {
+@IdClass(PhonePk.class)
+public class Phone implements Serializable {
+
 
     @Id
+    @Size(min = 4, max = 10)
     private String phonenumber;
 
+    @Id
     private String name;
+
+
 
     public Phone() {
 
         }
 
-    public Phone(String phoneNumber, String name) {
-        this.phonenumber = phoneNumber;
+
+    public Phone(@Size(min = 4, max = 10) String phonenumber, String name) {
+        this.phonenumber = phonenumber;
         this.name = name;
     }
 
     public String getPhonenumber() {
-        return phonenumber;
+        return Utils.getPrettyString(phonenumber);
     }
 
-    public void setPhonenumber(String phoneNumber) {
-        this.phonenumber = phoneNumber;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public String getName() {
@@ -36,4 +49,10 @@ public class Phone {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Phone formatPhone(){
+        this.phonenumber = Utils.getPrettyString(this.phonenumber);
+        return this;
+    }
+
 }
