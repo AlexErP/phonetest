@@ -12,13 +12,7 @@ public class AppTele
 {
     public static void main(String[] args)
     {
-        ConfigurableApplicationContext run = SpringApplication.run(AppTele.class, args);
+        SpringApplication.run(AppTele.class, args);
 
-
-        String[] beanNames = run.getBeanDefinitionNames();
-        Arrays.sort(beanNames);
-        for (String beanName : beanNames) {
-            System.out.println(beanName);
-        }
     }
 }
