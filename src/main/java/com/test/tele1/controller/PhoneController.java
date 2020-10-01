@@ -3,12 +3,9 @@ package com.test.tele1.controller;
 import com.test.tele1.domain.Phone;
 import com.test.tele1.service.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("phones")
